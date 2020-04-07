@@ -16,7 +16,7 @@ export default function CityDetails() {
 
   return (
     <div className='city-details-container'>
-      <img src={city.imageUrl} alt='city picture' />
+      <img src={city.imageUrl} alt='city' />
       <div className='city-details'>
         <h1>{city.name}</h1>
         <h3>{city.country}</h3>
