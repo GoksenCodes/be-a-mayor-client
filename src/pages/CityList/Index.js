@@ -2,19 +2,36 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Jumbotron } from "react-bootstrap";
 import { fetchCityList } from '../../store/cityList/actions';
+import { selectCities } from '../../store/cityList/selectors';
+import CityCard from './CityCard';
 
 export default function CityList() {
   const dispatch = useDispatch();
+  const cities = useSelector(selectCities);
 
   useEffect(() => {
     dispatch(fetchCityList());
   }, [dispatch])
 
   return (
-    <div className='city-list'>
+    <div className='city-page'>
       <Jumbotron>
         <h1>Browse through our list of cities</h1>
       </Jumbotron>
+      <div className='city-list'>
+        {cities.map((city, num) => {
+          return (
+            <CityCard 
+              name={city.name}
+              imageUrl={city.imageUrl}
+              country={city.country}
+              price={city.price}
+              inStock={city.inStock}
+              key={num}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -32,7 +32,7 @@ const cities = [
     description: 'They used to call it New Amsterdam.',
     population: 123456789,
     price: 9999999991234,
-    inStock: true,
+    inStock: false,
     userId: null 
   },
   {
@@ -43,7 +43,7 @@ const cities = [
     description: 'Usually it is cold, but has a very nice country side.',
     population: 693491,
     price: 9999,
-    inStock: true,
+    inStock: false,
     userId: null
   },
   {
@@ -54,7 +54,7 @@ const cities = [
     description: 'Super cool city, nice place to live and be free.',
     population: 9090909,
     price: 999999999,
-    inStock: true,
+    inStock: false,
     userId: null 
   },
   {
