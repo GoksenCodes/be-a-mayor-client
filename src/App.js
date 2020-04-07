@@ -13,6 +13,7 @@ import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
 import { Jumbotron } from "react-bootstrap";
 import CityList from "./pages/CityList/Index";
+import CityDetails from "./pages/CityDetails";
 
 
 const Other = () => (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/other" component={Other} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        <Route path='/cities/:id' component={CityDetails} />
       </Switch>
     </div>
   );

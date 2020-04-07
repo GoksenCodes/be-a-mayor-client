@@ -28,6 +28,7 @@ export default function CityList() {
               price={city.price}
               inStock={city.inStock}
               key={num}
+              id={city.id}
             />
           )
         })}

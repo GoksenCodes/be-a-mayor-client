@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { NavLink } from 'react-router-dom';
 
 export default function CityCard(props) {
   return (
@@ -14,7 +15,9 @@ export default function CityCard(props) {
             price: {props.price} <br />
             {!props.inStock ? <span style={{color: 'red'}}>[Sold Out]</span> : ''}
           </Card.Text>
-          <Button variant="primary">View details</Button>
+          <NavLink to={`/cities/${props.id}`} exact={true}>
+            <Button variant="primary">View details</Button>
+          </NavLink>
           <Button variant="primary">Add to cart</Button>
         </Card.Body>
       </Card>
