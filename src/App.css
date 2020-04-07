@@ -3,3 +3,18 @@
   grid-template-columns: 1fr 1fr 1fr;
   align-content: start;
 }
+
+.city-details-container {
+  display: flex; 
+  justify-content: space-evenly;
+}
+
+.city-details-container > img {
+  height: 35%;
+  width: 35%;
+  padding: 20px;
+}
+
+.city-details-container > div {
+  padding: 20px;
+}
