@@ -135,17 +135,6 @@ export const addCity = (
 
     // console.log(token);
 
-    console.log(
-      name,
-      description,
-      country,
-      continent,
-      imageUrl,
-      population,
-      price,
-      inStock
-    );
-
     const response = await axios.post(
       `${apiUrl}/city`,
       {
@@ -156,7 +145,7 @@ export const addCity = (
         imageUrl,
         population,
         price,
-        inStock,
+        inStock: true,
         userId: id,
       },
       {

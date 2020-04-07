@@ -17,7 +17,6 @@ export default function AddACity() {
   const [description, setDescription] = useState("");
   const [population, setPopulation] = useState("");
   const [price, setPrice] = useState("");
-  const [inStock, setInstock] = useState(true);
 
   function submitAddACity(event) {
     event.preventDefault();
@@ -30,8 +29,7 @@ export default function AddACity() {
         continent,
         description,
         population,
-        price,
-        inStock
+        price
       )
     );
   }
@@ -93,6 +91,7 @@ export default function AddACity() {
               <option value="5">Africa</option>
               <option value="6">Asia</option>
               <option value="7">Australia</option>
+              <option value="8">EuroAsia</option>
             </select>
             <div className="input-group-append"></div>
           </div>
@@ -123,21 +122,6 @@ export default function AddACity() {
             className="form-control"
             aria-label="Amount (to the nearest euro)"
           />
-        </div>
-
-        <div className="form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-            checked
-            disabled
-            value={inStock}
-            onChange={setInstock}
-          />
-          <label className="form-check-label" htmlFor="exampleCheck1">
-            City in stock
-          </label>
         </div>
 
         <Button className="mt-3 mb-5" type="submit" onClick={submitAddACity}>
