@@ -5,23 +5,31 @@ import {
   appLoading,
   appDoneLoading,
   showMessageWithTimeout,
-  setMessage
+  setMessage,
 } from "../appState/actions";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
+export const ADD_CITY_ADDED = "ADD_CITY_ADDED";
 
-const loginSuccess = userWithToken => {
+const addCityAdded = (addcity) => {
   return {
-    type: LOGIN_SUCCESS,
-    payload: userWithToken
+    type: ADD_CITY_ADDED,
+    payload: addcity,
   };
 };
 
-const tokenStillValid = userWithoutToken => ({
+const loginSuccess = (userWithToken) => {
+  return {
+    type: LOGIN_SUCCESS,
+    payload: userWithToken,
+  };
+};
+
+const tokenStillValid = (userWithoutToken) => ({
   type: TOKEN_STILL_VALID,
-  payload: userWithoutToken
+  payload: userWithoutToken,
 });
 
 export const logOut = () => ({ type: LOG_OUT });
@@ -33,7 +41,7 @@ export const signUp = (name, email, password) => {
       const response = await axios.post(`${apiUrl}/signup`, {
         name,
         email,
-        password
+        password,
       });
 
       dispatch(loginSuccess(response.data));
@@ -58,7 +66,7 @@ export const login = (email, password) => {
     try {
       const response = await axios.post(`${apiUrl}/login`, {
         email,
-        password
+        password,
       });
 
       dispatch(loginSuccess(response.data));
@@ -90,7 +98,7 @@ export const getUserWithStoredToken = () => {
       // if we do have a token,
       // check wether it is still valid or if it is expired
       const response = await axios.get(`${apiUrl}/me`, {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       // token is still valid
@@ -107,5 +115,50 @@ export const getUserWithStoredToken = () => {
       dispatch(logOut());
       dispatch(appDoneLoading());
     }
+  };
+};
+
+export const addCity = (
+  name,
+  description,
+  country,
+  continent,
+  imageUrl,
+  population,
+  price,
+  inStock
+) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    const token = state.user.token;
+    const id = state.user.id;
+
+    // console.log(token);
+
+    // console.log(name, description,country,continent, imageUrl,population,price,inStock);
+
+    const response = await axios.post(
+      `${apiUrl}/city`,
+      {
+        name,
+        description,
+        country,
+        continent,
+        imageUrl,
+        population,
+        price,
+        inStock,
+        userId: id,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    console.log("Response!", response);
+    dispatch(showMessageWithTimeout("success", true, "City Created"));
+    dispatch(addCityAdded(response.data));
   };
 };
