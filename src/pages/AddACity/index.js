@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 
 import { Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { AddaCity } from "../../store/user/actions";
+import { addCity } from "../../store/user/actions";
 
 export default function AddACity() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function AddACity() {
     event.preventDefault();
 
     dispatch(
-      AddACity(
+      addCity(
         name,
         country,
         imageUrl,
@@ -47,7 +47,7 @@ export default function AddACity() {
         <Form>
           <Form.Label className="mt-5">City name</Form.Label>
           <Form.Control
-            class="col"
+            className="col"
             value={name}
             onChange={(event) => setName(event.target.value)}
             placeholder="Name of your City"
@@ -60,7 +60,7 @@ export default function AddACity() {
             onChange={(event) => setDescription(event.target.value)}
             placeholder="Describe your city"
             rows="3"
-            class="form-control"
+            className="form-control"
           ></textarea>
 
           <Form.Label className="mt-3">Image Url</Form.Label>
@@ -79,14 +79,14 @@ export default function AddACity() {
           ></Form.Control>
 
           <Form.Label className="mt-3">Choose continent</Form.Label>
-          <div class="input-group">
+          <div className="input-group">
             <select
-              class="custom-select"
+              className="custom-select"
               id="inputGroupSelect04"
               onChange={(event) => setContinent(event.target.value)}
               value={continent}
             >
-              <option selected>Choose your continent</option>
+              <option defaultValue>Choose your continent</option>
               <option value="1">North America</option>
               <option value="2">South America</option>
               <option value="4">Europe</option>
@@ -94,7 +94,7 @@ export default function AddACity() {
               <option value="6">Asia</option>
               <option value="7">Australia</option>
             </select>
-            <div class="input-group-append"></div>
+            <div className="input-group-append"></div>
           </div>
 
           <Form.Label className="mt-3">Population</Form.Label>
@@ -113,29 +113,29 @@ export default function AddACity() {
         >
           Price
         </Form.Label>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">€</span>
-            <span class="input-group-text">0.00</span>
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <span className="input-group-text">€</span>
+            <span className="input-group-text">0.00</span>
           </div>
           <input
             type="number"
-            class="form-control"
+            className="form-control"
             aria-label="Amount (to the nearest euro)"
           />
         </div>
 
-        <div class="form-check">
+        <div className="form-check">
           <input
             type="checkbox"
-            class="form-check-input"
+            className="form-check-input"
             id="exampleCheck1"
             checked
             disabled
             value={inStock}
             onChange={setInstock}
           />
-          <label class="form-check-label" for="exampleCheck1">
+          <label className="form-check-label" htmlFor="exampleCheck1">
             City in stock
           </label>
         </div>
