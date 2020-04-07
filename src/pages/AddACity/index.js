@@ -132,6 +132,7 @@ export default function AddACity() {
             id="exampleCheck1"
             checked
             disabled
+            value={inStock}
             onChange={setInstock}
           />
           <label class="form-check-label" for="exampleCheck1">
