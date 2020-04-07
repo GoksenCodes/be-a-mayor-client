@@ -11,14 +11,6 @@ import {
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
-export const ADD_CITY_ADDED = "ADD_CITY_ADDED";
-
-const addCityAdded = (addcity) => {
-  return {
-    type: ADD_CITY_ADDED,
-    payload: addcity,
-  };
-};
 
 const loginSuccess = (userWithToken) => {
   return {
@@ -115,48 +107,5 @@ export const getUserWithStoredToken = () => {
       dispatch(logOut());
       dispatch(appDoneLoading());
     }
-  };
-};
-
-export const addCity = (
-  name,
-  description,
-  country,
-  continent,
-  imageUrl,
-  population,
-  price,
-  inStock
-) => {
-  return async (dispatch, getState) => {
-    const state = getState();
-    const token = state.user.token;
-    const id = state.user.id;
-
-    // console.log(token);
-
-    const response = await axios.post(
-      `${apiUrl}/city`,
-      {
-        name,
-        description,
-        country,
-        continent,
-        imageUrl,
-        population,
-        price,
-        inStock: true,
-        userId: id,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    console.log("Response!", response);
-    dispatch(showMessageWithTimeout("success", true, "City Created"));
-    dispatch(addCityAdded(response.data));
   };
 };

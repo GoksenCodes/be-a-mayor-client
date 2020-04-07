@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 
 import { Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addCity } from "../../store/user/actions";
+import { addCity } from "../../store/addACity/actions";
 
 export default function AddACity() {
   const dispatch = useDispatch();
