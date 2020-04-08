@@ -15,7 +15,7 @@ import { getUserWithStoredToken } from "./store/user/actions";
 import { Jumbotron } from "react-bootstrap";
 import CityList from "./pages/CityList/Index";
 import CityDetails from "./pages/CityDetails";
-
+import Checkout from "./pages/Checkout";
 
 const Other = () => (
   <Jumbotron>
@@ -42,8 +42,8 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route path="/addacity" component={AddACity} />
-        <Route path='/cities/:id' component={CityDetails} />
-
+        <Route path="/cities/:id" component={CityDetails} />
+        <Route path="/cart" component={Checkout} />
       </Switch>
     </div>
   );
