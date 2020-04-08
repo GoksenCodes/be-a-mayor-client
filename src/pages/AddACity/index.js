@@ -16,7 +16,7 @@ export default function AddACity() {
   const [continent, setContinent] = useState("");
   const [description, setDescription] = useState("");
   const [population, setPopulation] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
 
   function submitAddACity(event) {
     event.preventDefault();
@@ -24,8 +24,8 @@ export default function AddACity() {
     dispatch(
       addCity(
         name,
-        country,
         imageUrl,
+        country,
         continent,
         description,
         population,
@@ -85,13 +85,13 @@ export default function AddACity() {
               value={continent}
             >
               <option defaultValue>Choose your continent</option>
-              <option value="1">North America</option>
-              <option value="2">South America</option>
-              <option value="4">Europe</option>
-              <option value="5">Africa</option>
-              <option value="6">Asia</option>
-              <option value="7">Australia</option>
-              <option value="8">EuroAsia</option>
+              <option value="North America">North America</option>
+              <option value="South America">South America</option>
+              <option value="Europe">Europe</option>
+              <option value="Africa">Africa</option>
+              <option value="Asia">Asia</option>
+              <option value="Australia">Australia</option>
+              <option value="EuroAsia">EuroAsia</option>
             </select>
             <div className="input-group-append"></div>
           </div>
@@ -105,17 +105,14 @@ export default function AddACity() {
           ></Form.Control>
         </Form>
 
-        <Form.Label
-          className="mt-3"
+        <Form.Label className="mt-3">Price</Form.Label>
+        <div
           value={price}
           onChange={(event) => setPrice(event.target.value)}
+          className="input-group mb-3"
         >
-          Price
-        </Form.Label>
-        <div className="input-group mb-3">
           <div className="input-group-prepend">
             <span className="input-group-text">€</span>
-            <span className="input-group-text">0.00</span>
           </div>
           <input
             type="number"
