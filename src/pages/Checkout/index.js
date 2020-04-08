@@ -17,7 +17,6 @@ export default function Checkout() {
 
   // const currentCitiesintheCard = cities.filter(city => citiesIntheCart.includes(city.id))
 
-  ///////
   console.log(useSelector(selectCitiesIntheCart));
   const citiesIntheCart = useSelector(selectCitiesIntheCart);
 
@@ -40,7 +39,7 @@ export default function Checkout() {
     <div>
       <h3>Shopping cart</h3>
       {citiesIntheCart.map((cityIntheCart, num) => {
-        itemNo++; //we add itemno as a prop outside of the object that we map
+        itemNo++; //added itemnNo as a prop outside of the object that we map
         return (
           <ShoppingCart
             key={num}
