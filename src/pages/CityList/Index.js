@@ -5,21 +5,23 @@ import Button from 'react-bootstrap/Button';
 import { fetchCityList, fetchCityByCondition } from '../../store/cityList/actions';
 import { selectCities } from '../../store/cityList/selectors';
 import CityCard from './CityCard';
+import { selectFilteredCities } from '../../store/cityFilter/selectors';
 
 export default function CityList() {
   const dispatch = useDispatch();
-  const cities = useSelector(selectCities);
+  const citiesList = useSelector(selectCities);
+  const filteredCities = useSelector(selectFilteredCities);
   const [country, setCountry] = useState('all');
   const [continent, setContinent] = useState('all');
   const [population, setPopulation] = useState(0);
   const [price, setPrice] = useState(0);
+  const [toggle, setToggle] = useState('list');
 
-  
-  const populationArray = cities.map(city => {
+  const populationArray = citiesList.map(city => {
     return city.population;
   })
 
-  const priceArray = cities.map(city => {
+  const priceArray = citiesList.map(city => {
     return city.price;
   })
 
@@ -37,6 +39,8 @@ export default function CityList() {
     }
   }, [dispatch, minPopulation, maxPrice])
 
+
+
   const clickHandler = () => {
     console.log(`
       continent: ${continent}
@@ -45,7 +49,10 @@ export default function CityList() {
       price: ${price}
     `)
     dispatch(fetchCityByCondition(country, continent, population, price));
+    setToggle('filter');
   }
+
+  const cities = toggle === 'list' ? citiesList : filteredCities;
 
   return (
     <div className='city-page'>
@@ -57,7 +64,8 @@ export default function CityList() {
         <label htmlFor="country-select">Sort by country:</label>
         <select name="country" id="country-select" onChange={(e) => setCountry(e.target.value)}>
           <option value="all">--Please choose an option--</option>
-           {cities.map(city => {
+          <option value="all">all</option>
+           {citiesList.map(city => {
              return (
                 <option value={city.country} key={city.id}>{city.country}</option>
              )
@@ -66,7 +74,8 @@ export default function CityList() {
         <label htmlFor="continent-select">Sort by continent:</label>
         <select name="continent" id="continent-select" onChange={(e) => setContinent(e.target.value)}>
           <option value="all">--Please choose an option--</option>
-           {cities.map(city => {
+          <option value="all">all</option>
+           {citiesList.map(city => {
              return (
                 <option value={city.continent} key={city.id}>{city.continent}</option>
              )
@@ -78,6 +87,7 @@ export default function CityList() {
         <input type="range" value={price} min={minPrice} max={maxPrice} onChange={e => setPrice(e.target.value)} />
 
         <Button variant="primary" onClick={clickHandler}>Set filters</Button>
+        <Button variant="primary" onClick={() => setToggle('list')}>Reset</Button>
       </div>
 
       <div className='city-list'>

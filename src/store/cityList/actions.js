@@ -14,7 +14,8 @@ export function fetchCityByCondition(country, continent, population, price) {
   return async (dispatch, getState) => {
     try {
       const response = await axios.get(`${apiUrl}/cities/${country}/${continent}/${population}/${price}`);
-      console.log('response in thunk: ', response.data);
+      
+      dispatch({ type: 'FILTER_CITIES', payload: response.data })
     }
     catch (error) {
       console.log('error: ', error);
