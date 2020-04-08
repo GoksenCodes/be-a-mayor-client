@@ -45,6 +45,12 @@ export default function CityList() {
     setToggle('filter');
   }
 
+  const resetHandler = () => {
+    setToggle('list');
+    setPrice(maxPrice);
+    setPopulation(minPopulation);
+  }
+
   const cities = toggle === 'list' ? citiesList : filteredCities;
 
   return (
@@ -92,7 +98,7 @@ export default function CityList() {
           </div>
 
           <Button className='button' variant="primary" onClick={clickHandler}>Set filters</Button>
-          <Button className='button' type="reset" value="Reset" variant="primary" onClick={() => setToggle('list')}>Reset</Button>
+          <Button className='button' type="reset" value="Reset" variant="primary" onClick={resetHandler}>Reset</Button>
         </div>
       </form>
 
