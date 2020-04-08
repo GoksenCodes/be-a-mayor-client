@@ -7,31 +7,46 @@ import { selectCities } from '../../store/cityList/selectors';
 import CityCard from './CityCard';
 
 export default function CityList() {
-  const [condition, setCondition] = useState('');
   const dispatch = useDispatch();
   const cities = useSelector(selectCities);
+  const [country, setCountry] = useState('all');
+  const [continent, setContinent] = useState('all');
 
   useEffect(() => {
-    if(condition === 'country') {
-      
-    } else if(condition === 'continent') {
-
-    } else {
-      
-    }
     dispatch(fetchCityList());
+    if(country !== 'all' || continent !== 'all') {
+      // dispatch(fetchCityByCondition(country, continent))
+    }
   }, [dispatch])
   
-  console.log('condition: ', condition)
+  console.log('country: ', country, 'continent: ', continent);
   return (
     <div className='city-page'>
       <Jumbotron>
         <h1>Browse through our list of cities</h1>
       </Jumbotron>
+
       <div className='filter-buttons'>
-        <Button variant="primary" onClick={() => setCondition('continent')} >Sort by continent</Button>
-        <Button variant="primary" onClick={() => setCondition('country')}>Sort by country</Button>
+        <label htmlFor="country-select">Sort by country:</label>
+        <select name="country" id="country-select" onChange={(e) => setCountry(e.target.value)}>
+          <option value="all">--Please choose an option--</option>
+           {cities.map(city => {
+             return (
+                <option value={city.country} key={city.id}>{city.country}</option>
+             )
+           })}
+        </select>
+        <label htmlFor="continent-select">Sort by continent:</label>
+        <select name="continent" id="continent-select" onChange={(e) => setContinent(e.target.value)}>
+          <option value="all">--Please choose an option--</option>
+           {cities.map(city => {
+             return (
+                <option value={city.continent} key={city.id}>{city.continent}</option>
+             )
+           })}
+        </select>
       </div>
+
       <div className='city-list'>
         {cities.map((city, num) => {
           return (

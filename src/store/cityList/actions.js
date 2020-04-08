@@ -9,3 +9,9 @@ export function fetchCityList() {
     
   }
 }
+
+export function fetchCityByCondition(country, continent) {
+  return async (dispatch, getState) => {
+    
+  }
+}
