@@ -10,8 +10,14 @@ export function fetchCityList() {
   }
 }
 
-export function fetchCityByCondition(country, continent) {
+export function fetchCityByCondition(country, continent, population, price) {
   return async (dispatch, getState) => {
-    
+    try {
+      const response = await axios.get(`${apiUrl}/cities/${country}/${continent}/${population}/${price}`);
+      console.log('response in thunk: ', response);
+    }
+    catch (error) {
+      console.log('error: ', error);
+    }
   }
 }

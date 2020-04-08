@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Jumbotron } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
-import { fetchCityList } from '../../store/cityList/actions';
+import { fetchCityList, fetchCityByCondition } from '../../store/cityList/actions';
 import { selectCities } from '../../store/cityList/selectors';
 import CityCard from './CityCard';
 
@@ -11,26 +11,41 @@ export default function CityList() {
   const cities = useSelector(selectCities);
   const [country, setCountry] = useState('all');
   const [continent, setContinent] = useState('all');
-  // const [minvalue, setMinValue] = useState(0);
-  
-  useEffect(() => {
-    dispatch(fetchCityList());
-    if(country !== 'all' || continent !== 'all') {
-      // dispatch(fetchCityByCondition(country, continent))
-    }
-  }, [dispatch])
+  const [population, setPopulation] = useState(0);
+  const [price, setPrice] = useState(0);
 
   
   const populationArray = cities.map(city => {
     return city.population;
   })
 
-  const max = Math.max(...populationArray);
-  const min = Math.min(...populationArray);
+  const priceArray = cities.map(city => {
+    return city.price;
+  })
 
-  console.log('populationArray: ', populationArray);
-  console.log('max value: ', max);
-  console.log('min value: ', min);
+  const maxPopulation = Math.max(...populationArray);
+  const minPopulation = Math.min(...populationArray);
+
+  const maxPrice = Math.max(...priceArray);
+  const minPrice = Math.min(...priceArray);
+  
+  useEffect(() => {
+    dispatch(fetchCityList());
+    if(minPopulation !== Infinity) {
+      setPopulation(minPopulation);
+      setPrice(maxPrice);
+    }
+  }, [dispatch, minPopulation, maxPrice])
+
+  const clickHandler = () => {
+    console.log(`
+      continent: ${continent}
+      country: ${country}
+      population: ${population}
+      price: ${price}
+    `)
+    dispatch(fetchCityByCondition(continent, country, population, price));
+  }
 
   return (
     <div className='city-page'>
@@ -57,6 +72,12 @@ export default function CityList() {
              )
            })}
         </select>
+        <label>Minimum value of population:</label>
+        <input type="range" value={population} min={minPopulation} max={maxPopulation} onChange={e => setPopulation(e.target.value)} />
+        <label>Maximum price:</label>
+        <input type="range" value={price} min={minPrice} max={maxPrice} onChange={e => setPrice(e.target.value)} />
+
+        <Button variant="primary" onClick={clickHandler}>Set filters</Button>
       </div>
 
       <div className='city-list'>
