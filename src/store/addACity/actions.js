@@ -19,7 +19,8 @@ export const addCity = (
   description,
   population,
   price,
-  inStock
+  // inStock,
+  history
 ) => {
   return async (dispatch, getState) => {
     const state = getState();
@@ -51,5 +52,6 @@ export const addCity = (
     console.log("Response!", response);
     dispatch(showMessageWithTimeout("success", true, "City Created"));
     dispatch(addCityAdded(response.data));
+    history.push("/");
   };
 };

@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-
+import { useHistory } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addCity } from "../../store/addACity/actions";
 
 export default function AddACity() {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const [name, setName] = useState("");
   const [country, setCountry] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -20,7 +20,6 @@ export default function AddACity() {
 
   function submitAddACity(event) {
     event.preventDefault();
-
     dispatch(
       addCity(
         name,
@@ -29,7 +28,8 @@ export default function AddACity() {
         continent,
         description,
         population,
-        price
+        price,
+        history
       )
     );
   }
