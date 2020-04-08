@@ -15,9 +15,9 @@ export default function CityDetails() {
   }, [dispatch, id]);
 
   return (
-    <div className="city-details-container">
-      <img src={city.imageUrl} alt="city picture" />
-      <div className="city-details">
+    <div className='city-details-container'>
+      <img src={city.imageUrl} alt='city' />
+      <div className='city-details'>
         <h1>{city.name}</h1>
         <h3>{city.country}</h3>
         <h3>{city.continent}</h3>
