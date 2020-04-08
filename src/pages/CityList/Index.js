@@ -82,12 +82,12 @@ export default function CityList() {
           </div>
           
           <div className='population-filter'>
-            <label>Minimum value of population:</label>
+            <label>Minimum value of population:</label>{population}
             <input type="range" value={population} min={minPopulation} max={maxPopulation} onChange={e => setPopulation(e.target.value)} />
           </div>
 
           <div className='price-filter'>
-            <label>Maximum price:</label>
+            <label>Maximum price:</label>{price}
             <input type="range" value={price} min={minPrice} max={maxPrice} onChange={e => setPrice(e.target.value)} />
           </div>
 
