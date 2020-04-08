@@ -12,7 +12,7 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isOwner, setIsOwner] = useState("");
+  const [isOwner, setIsOwner] = useState(false);
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -80,7 +80,7 @@ export default function SignUp() {
               type="checkbox"
               className="form-check-input"
               id="exampleCheck1"
-              onClick={(event) => setIsOwner(event.target.value)}
+              onChange={(event) => setIsOwner(event.target.checked)}
             />
             <label className="form-check-label" htmlFor="exampleCheck1">
               I'm a owner
