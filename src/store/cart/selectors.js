@@ -1,1 +1,4 @@
-export const selectCitiesIntheCart = state => state.citiesIntheCart;
+export const selectCitiesIntheCart = state => {
+  //console.log("STATE in selector", state);
+  return state.cart;
+};

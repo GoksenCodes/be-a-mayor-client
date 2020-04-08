@@ -1,4 +1,4 @@
-//check the navbar, chnage the name of the folder
+//check the navbar, change the name of the folder
 
 import React from "react";
 import ShoppingCart from "./ShoppingCart";
@@ -17,10 +17,13 @@ export default function Checkout() {
 
   // const currentCitiesintheCard = cities.filter(city => citiesIntheCart.includes(city.id))
 
+  ///////
   console.log(useSelector(selectCitiesIntheCart));
   const citiesIntheCart = useSelector(selectCitiesIntheCart);
 
+  console.log(citiesIntheCart);
   const prices = citiesIntheCart.map(a => a.price);
+
   console.log(prices);
 
   const totalPrice = prices.reduce((a, b) => a + b, 0);
