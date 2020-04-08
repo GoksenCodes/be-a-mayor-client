@@ -44,7 +44,7 @@ export default function CityList() {
       population: ${population}
       price: ${price}
     `)
-    dispatch(fetchCityByCondition(continent, country, population, price));
+    dispatch(fetchCityByCondition(country, continent, population, price));
   }
 
   return (
