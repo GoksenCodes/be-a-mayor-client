@@ -11,15 +11,27 @@ export default function CityList() {
   const cities = useSelector(selectCities);
   const [country, setCountry] = useState('all');
   const [continent, setContinent] = useState('all');
-
+  // const [minvalue, setMinValue] = useState(0);
+  
   useEffect(() => {
     dispatch(fetchCityList());
     if(country !== 'all' || continent !== 'all') {
       // dispatch(fetchCityByCondition(country, continent))
     }
   }, [dispatch])
+
   
-  console.log('country: ', country, 'continent: ', continent);
+  const populationArray = cities.map(city => {
+    return city.population;
+  })
+
+  const max = Math.max(...populationArray);
+  const min = Math.min(...populationArray);
+
+  console.log('populationArray: ', populationArray);
+  console.log('max value: ', max);
+  console.log('min value: ', min);
+
   return (
     <div className='city-page'>
       <Jumbotron>
