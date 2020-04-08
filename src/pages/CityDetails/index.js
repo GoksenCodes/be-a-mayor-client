@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import Button from 'react-bootstrap/Button';
-import { fetchCityById } from '../../store/cityDetails/actions';
-import { selectCityDetail } from '../../store/cityDetails/selectors';
+import React, { useEffect } from "react";
+import { useParams, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Button from "react-bootstrap/Button";
+import { fetchCityById } from "../../store/cityDetails/actions";
+import { selectCityDetail } from "../../store/cityDetails/selectors";
 
 export default function CityDetails() {
   const { id } = useParams();
@@ -24,11 +24,15 @@ export default function CityDetails() {
         <p>{city.description}</p>
         <p>population: {city.population}</p>
         <p>price: €{city.price}</p>
-        {city.inStock ? <p>In stock!</p> : <p style={{color: 'red'}}>[Sold Out]</p>}
-        <NavLink to='' exact={true}>
+        {city.inStock ? (
+          <p>In stock!</p>
+        ) : (
+          <p style={{ color: "red" }}>[Sold Out]</p>
+        )}
+        <NavLink to="" exact={true}>
           <Button variant="primary">Add to cart</Button>
         </NavLink>
       </div>
     </div>
-  )
+  );
 }

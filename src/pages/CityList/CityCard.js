@@ -1,9 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
+import { addToCart } from '../../store/cart/actions';
 
 export default function CityCard(props) {
+  const dispatch = useDispatch();
+
+  const clickHandler = () => {
+    dispatch(addToCart(props.id));
+  }
+
+
   return (
     <div className='city-card'>
       <Card style={{ width: '18rem' }}>
@@ -18,7 +27,9 @@ export default function CityCard(props) {
           <NavLink to={`/cities/${props.id}`} exact={true}>
             <Button variant="primary">View details</Button>
           </NavLink>
-          <Button variant="primary">Add to cart</Button>
+          {props.inStock 
+          ?  <Button variant="primary" onClick={clickHandler}>Add to cart</Button> 
+          : ''}
         </Card.Body>
       </Card>
     </div>
