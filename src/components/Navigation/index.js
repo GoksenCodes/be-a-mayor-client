@@ -7,6 +7,7 @@ import { selectToken, selectUser } from "../../store/user/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
+import Logo from "../../Images/Logo.png";
 import { selectCitiesIntheCart } from "../../store/cart/selectors";
 
 export default function Navigation() {
@@ -16,9 +17,13 @@ export default function Navigation() {
   const citiesIntheCart = useSelector(selectCitiesIntheCart);
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar
+      bg="dark-light"
+      className="navbar navbar-expand-sm sticky-top navbar-light bg-light"
+      expand="lg"
+    >
       <Navbar.Brand as={NavLink} to="/">
-        Be a Mayor
+        <img src={Logo} alt="logo" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -27,7 +32,6 @@ export default function Navigation() {
           {token && isOwner.isOwner === true ? (
             <NavbarItem path="/addacity" linkText="Add a city" />
           ) : null}
-          {/* <NavbarItem path="/addacity" linkText="city" /> */}
           {loginLogoutControls}
           <span>
             <NavbarItem path="/cart" linkText="Cart" />
