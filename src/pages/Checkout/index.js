@@ -54,7 +54,7 @@ export default function Checkout() {
       <div>
         <ListGroup horizontal>
           <ListGroup.Item>Total Price </ListGroup.Item>
-          <ListGroup.Item>{totalPrice} ₿</ListGroup.Item>
+          <ListGroup.Item>{totalPrice} €</ListGroup.Item>
         </ListGroup>
       </div>
     </div>
