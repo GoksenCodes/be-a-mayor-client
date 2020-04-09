@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import { fetchCityById } from "../../store/cityDetails/actions";
 import { selectCityDetail } from "../../store/cityDetails/selectors";
+import { addToCart } from "../../store/cart/actions";
 
 export default function CityDetails() {
   const { id } = useParams();
@@ -14,6 +15,10 @@ export default function CityDetails() {
   useEffect(() => {
     dispatch(fetchCityById(id));
   }, [dispatch, id]);
+
+  const clickHandler = () => {
+    dispatch(addToCart(city.id));
+  };
 
   return (
     <Container

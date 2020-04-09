@@ -1,0 +1,1 @@
+export const selectFilteredCities = state => state.cityFilter;
