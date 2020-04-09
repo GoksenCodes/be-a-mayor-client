@@ -14,7 +14,7 @@ export default function ShoppingCart(props) {
       <ListGroup horizontal>
         <ListGroup.Item>item # {props.itemNo} </ListGroup.Item>
         <ListGroup.Item>{props.name}</ListGroup.Item>
-        <ListGroup.Item>{props.price} ₿</ListGroup.Item>
+        <ListGroup.Item>{props.price} € </ListGroup.Item>
         <Button variant="danger" onClick={() => onDelete(props.id)}>
           Remove item
         </Button>
