@@ -35,6 +35,8 @@ export default function CityList() {
 
   useEffect(() => {
     dispatch(fetchCityList());
+  }, [dispatch]);
+
     if (minPopulation !== Infinity) {
       setPopulation(minPopulation);
       setPrice(maxPrice);
@@ -56,10 +58,22 @@ export default function CityList() {
 
   return (
     <div className="city-page">
-      <Jumbotron>
-        <h1>Browse through our list of cities</h1>
+      <Jumbotron
+        style={{
+          background: "#f2f0ea",
+          paddingTop: "20px",
+          paddingBottom: "20px",
+        }}
+      >
+        <h1
+          style={{
+            textAlign: "center",
+            fontWeight: 300,
+          }}
+        >
+          Browse through our list of cities
+        </h1>
       </Jumbotron>
-
       <form>
         <div className="filter-buttons">
           <div className="country-filter">
@@ -138,7 +152,6 @@ export default function CityList() {
           </Button>
         </div>
       </form>
-
       <div className="city-list">
         {cities.map((city, num) => {
           return (
