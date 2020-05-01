@@ -1,42 +1,15 @@
-# Frontend template
+# Be A mayor
 
-This is a simple react/redux/jwt template to start a project quickly
+This is a team project where 3 developers built a web shop in 3 days for users to search, filter and buy cities locally. 
 
-## Table of contents:
+Built with React & Redux for the front end, Docker, Node with Express for RestAPIs in the backend, and PostgreSQL and Sequelize for storing user data.
 
-- **[Setup](#setup-how-to-use-this-template)**
-- **[Create React App docs](#cra-docs)**
+## Wireframes
+![be a mayor](https://ibb.co/6RPqLmj)
 
-## SETUP How to use this template
+## Developers
 
-1. Create a new project based on this template using the `Use this template` button
-
-![HOW_TO_USE](https://user-images.githubusercontent.com/20372832/77003323-70966180-695d-11ea-8abe-b362d57135f3.gif)
-
-2. Clone the app
-
-```
-git clone git@github.com:YOUR_GITHUB_NAME/YOUR_PROJECT_NAME.git
-```
-
-3. cd into your project
-
-```
-cd YOUR_PROJECT_NAME
-```
-
-4. install dependencies
-
-```
-npm install
-```
-
-5. Start development server with npm start
-
-```
-npm start
-```
-
-## CRA docs
-
-The normal Create React App docs can be found in [CRA_DOCS.md](./CRA_DOCS.md)
+Check the GitHub profiles of Developers of this project:
+[Jason](https://github.com/JasonNelemans)
+[Yasin](https://github.com/chasin87)
+[Goksen](https://github.com/GoksenCodes)
